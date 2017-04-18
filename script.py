@@ -8,7 +8,8 @@ class Abstract:
     def __init__(self):
         self.data = {}
 
-    def checkint(self, num):
+    @staticmethod
+    def checkint(num):
         """
             Check if num is integer. 
         """
@@ -18,13 +19,15 @@ class Abstract:
         except ValueError:
             return False
 
-    def deletefiles(self, fname):
+    @staticmethod
+    def deletefiles(fname):
         """
             Remove downloaded file. 
         """
         os.remove(fname)
 
-    def downloadfile(self, url, fname):
+    @staticmethod
+    def downloadfile(url, fname):
         """
             Download file from url and save it under fname on disk. 
         """
@@ -57,9 +60,10 @@ class Abstract:
         self.deletefiles(fname)
         return self.data[min(self.data.keys())]
 
-    def removespecial(self, num):
+    @staticmethod
+    def removespecial(num):
         """
-            Remove special characters from num. 
+            Remove all non number characters from num. 
         """
         return re.sub(r'[^\d]+', '', num)
 
